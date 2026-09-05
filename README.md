@@ -8,7 +8,10 @@ Tell the app about your business and it generates:
 
 - 🎯 Target Audience
 - 🪻 Campaign Ideas
-- ✿ Instagram Content Ideas
+- ✿ Instagram Content Ideas<img width="947" height="434" alt="Screenshot 2026-09-05 175558" src="https://github.com/user-attachments/assets/824aecce-2387-4156-a295-f596ac5c70a2" />
+<img width="947" height="439" alt="Screenshot 2026-09-05 175534" src="https://github.com/user-attachments/assets/32d88d75-ac0f-4025-917e-f9eb5f8362ea" />
+<img width="947" height="428" alt="Screenshot 2026-09-05 175454" src="https://github.com/user-attachments/assets/5317b0b5-8357-4ea6-991d-6803bf70ffa8" />
+
 - ♡ Sample Ad Copy
 - 🌿 Growth Suggestions
 
