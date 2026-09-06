@@ -70,7 +70,7 @@ Do not add any other sections.
         const data = await response.json();
 
         if (!response.ok) {
-            console.error(data);
+            console.error("Groq API Error:", data);
 
             return res.status(500).json({
                 error: "AI service error."
@@ -83,7 +83,7 @@ Do not add any other sections.
 
     } catch (error) {
 
-        console.error(error);
+        console.error("Server Error:", error);
 
         res.status(500).json({
             error: "Could not connect to the AI model."
