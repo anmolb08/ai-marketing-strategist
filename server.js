@@ -1,7 +1,8 @@
+require("dotenv").config();
 const express = require("express");
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 app.use(express.static("."));
@@ -42,24 +43,42 @@ Do not add any other sections.
 
     try {
 
-        const response = await fetch("http://localhost:11434/api/generate", {
-            method: "POST",
+        const response = await fetch(
+            "https://api.groq.com/openai/v1/chat/completions",
+            {
+                method: "POST",
 
-            headers: {
-                "Content-Type": "application/json"
-            },
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${process.env.GROQ_API_KEY}`
+                },
 
-            body: JSON.stringify({
-                model: "llama3.2:3b",
-                prompt: prompt,
-                stream: false
-            })
-        });
+                body: JSON.stringify({
+                    model: "openai/gpt-oss-20b",
+                    messages: [
+                        {
+                            role: "user",
+                            content: prompt
+                        }
+                    ],
+                    temperature: 0.7,
+                    max_tokens: 1000
+                })
+            }
+        );
 
         const data = await response.json();
 
+        if (!response.ok) {
+            console.error(data);
+
+            return res.status(500).json({
+                error: "AI service error."
+            });
+        }
+
         res.json({
-            strategy: data.response
+            strategy: data.choices[0].message.content
         });
 
     } catch (error) {
@@ -72,6 +91,6 @@ Do not add any other sections.
     }
 });
 
-app.listen(PORT, () => {
-    console.log(`Server running at http://localhost:${PORT}`);
+app.listen(PORT, "0.0.0.0", () => {
+    console.log(`Server running on port ${PORT}`);
 });
